@@ -11,6 +11,9 @@ class LawNature(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        unique_together = ('url', )
+
 
 class SettingItem(models.Model):
     title = models.CharField(max_length=200, verbose_name='标题')

@@ -33,9 +33,9 @@ class LawSpider(scrapy.Spider):
 
     def parse(self, response):
         row = response.meta['row']
-        category_urls = response.xpath(row['law_url_xpath']).extract()
-        policy_url = response.xpath(row['policy_url_xpath']).extract()
-        plan_url = response.xpath(row['plan_url_xpath']).extract()
+        category_urls = response.xpath(row['law_url_xpath']).extract()  #最新法规
+        policy_url = response.xpath(row['policy_url_xpath']).extract()  #政策解读
+        plan_url = response.xpath(row['plan_url_xpath']).extract()  #规划计划总结
         category_urls.append(policy_url[0])
         category_urls.append(plan_url[0])
         for category_url in category_urls:
@@ -44,7 +44,7 @@ class LawSpider(scrapy.Spider):
 
     def get_this_urls(self, response):
         row = response.meta['row']
-        urls = response.xpath(row['target_url_xpath']).extract()
+        urls = response.xpath(row['target_url_xpath']).extract()    #提取页面条目列表url
         # print(urls)
         for url in urls:
             url = response.urljoin(url)
@@ -69,10 +69,10 @@ class LawSpider(scrapy.Spider):
 
             item = LawItem()
             title = response.xpath(row['title_xpath']).extract()[0]
-            divs = response.xpath(row['doc_div_xpath'])
-            doc = ''
-            for p in divs.xpath(row['dov_xpath']):
-                doc += p.extract().strip()
+            # divs = response.xpath(row['doc_div_xpath'])
+            doc = response.xpath(row['doc_div_xpath']).extract()
+            # for p in divs.xpath(row['dov_xpath']):
+            #     doc += p.extract().strip()
 
             item['title'] = title
             item['doc'] = doc
