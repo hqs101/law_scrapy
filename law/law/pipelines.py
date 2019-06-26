@@ -22,7 +22,7 @@ class LawPipeline(object):
         self.cursor = self.connect.cursor()
 
     def process_item(self, item, spider):
-        sql = 'insert into law_scrapy.web_lawnature(title,doc, url) values(%s,%s,%s)'
+        sql = 'insert ignore into law_scrapy.web_lawnature(title,doc, url) values(%s,%s,%s)'
         self.cursor.execute(sql, (item['title'], item['doc'], item['url']))
         self.connect.commit()
 

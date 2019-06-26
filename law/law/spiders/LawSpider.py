@@ -65,6 +65,7 @@ class LawSpider(scrapy.Spider):
             for file_url in urls:
                 print('处理附件......')
                 file_url = response.urljoin(file_url)
+                print('文件url:'+file_url)
                 self.download_file(response, file_url)
 
             item = LawItem()
