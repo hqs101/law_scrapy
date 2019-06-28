@@ -1,6 +1,7 @@
 from django.apps import AppConfig
 from suit.apps import DjangoSuitConfig
 from suit.menu import ParentItem, ChildItem
+from django.utils.module_loading import autodiscover_modules
 
 
 class WebConfig(DjangoSuitConfig):
@@ -14,3 +15,5 @@ class WebConfig(DjangoSuitConfig):
             ChildItem(model='web.settingitem')
         ]),
     )
+
+
