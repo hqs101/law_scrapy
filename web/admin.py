@@ -4,7 +4,7 @@ from web.models import LawNature, SettingItem
 
 
 class LawNatureAdmin(admin.ModelAdmin):
-    list_display = ['url', 'title']
+    list_display = ['source', 'title']
     list_display_links = list_display
 
 

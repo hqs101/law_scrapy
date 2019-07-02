@@ -22,14 +22,9 @@ class LawPipeline(object):
         self.cursor = self.connect.cursor()
 
     def process_item(self, item, spider):
-        if len(item) > 1:
-            sql = 'insert ignore into law_scrapy.web_lawnature(title,doc, url) values(%s,%s,%s)'
-            self.cursor.execute(sql, (item['title'], item['doc'], item['url']))
-            self.connect.commit()
-        else:
-            sql = 'insert ignore into law_scrapy.web_lawurl(url) values(%s)'
-            self.cursor.execute(sql, (item['url']))
-            self.connect.commit()
+        sql = 'insert ignore into law_scrapy.web_lawnature(source,title,doc) values(%s,%s,%s)'
+        self.cursor.execute(sql, (item['source'], item['title'], item['doc']))
+        self.connect.commit()
 
     def close_spider(self, spider):
         self.cursor.close()

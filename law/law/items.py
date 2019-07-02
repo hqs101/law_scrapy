@@ -11,12 +11,7 @@ import scrapy
 class LawItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    source = scrapy.Field()
     title = scrapy.Field()
     doc = scrapy.Field()
-    url = scrapy.Field()
 
-
-class UrlItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    url = scrapy.Field()

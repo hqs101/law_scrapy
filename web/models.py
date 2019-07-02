@@ -4,15 +4,15 @@ from django.db import models
 
 
 class LawNature(models.Model):
+    source = models.CharField(max_length=1000, verbose_name='来源')
     title = models.CharField(max_length=1000, verbose_name='标题')
     doc = models.TextField(verbose_name='内容')
-    url = models.CharField(max_length=1000, verbose_name='URL')
 
     def __str__(self):
         return self.title
 
-    class Meta:
-        unique_together = ('url', )
+    # class Meta:
+    #     unique_together = ('url', )
 
 
 class SettingItem(models.Model):
