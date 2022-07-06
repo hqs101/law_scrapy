@@ -12,7 +12,7 @@ django-suit==2.0a1
 hyperlink==19.0.0
 idna==2.8
 incremental==17.5.0
-lxml==4.3.4
+lxml==4.9.1
 mysqlclient==1.4.2
 parsel==1.5.1
 pyasn1==0.4.5
